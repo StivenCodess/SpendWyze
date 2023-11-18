@@ -1,4 +1,3 @@
-//import { useGetGlobalContext } from "../context/GlobalContext";
 import MoneySend from "../icons/MoneySend";
 
 export default function Expenses({ expenses }) {
