@@ -10,7 +10,11 @@ export const useTransactionState = create((set, get) => {
 			const { transactions } = get();
 			set({ transactions: [...transactions, transaction] });
 		},
-		removeTransaction: () => {},
+		removeTransaction: (id) => {
+			const { transactions } = get();
+			const newTransactions = transactions.filter((transaction) => transaction.id !== id);
+			set({ transactions: newTransactions });
+		},
 		updateTransactionTotals: () => {
 			const { transactions } = get();
 
