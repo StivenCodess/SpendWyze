@@ -1,5 +1,5 @@
 import { Days_One } from "next/font/google";
-import FooterNavigation from "./ui/home/Footer";
+import FooterNavigation from "./ui/footer/Footer";
 import Title from "./ui/home/Title";
 import "./globals.css";
 
