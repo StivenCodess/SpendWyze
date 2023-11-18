@@ -3,7 +3,6 @@ import { useTransactionState } from "./utils/store";
 import Balance from "./ui/home/Balance";
 import Expenses from "./ui/home/Expenses";
 import Income from "./ui/home/Income";
-import FooterNav from "./ui/footer/Footer";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
 	);
 
 	useEffect(() => {
-		if (Object.keys(transactions).length <= 0) return;
 		updateTransactionTotals();
 	}, [transactions, updateTransactionTotals]);
 
