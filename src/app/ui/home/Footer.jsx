@@ -1,12 +1,29 @@
-//import { useGetGlobalContext } from "../context/GlobalContext";
+"use client";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
 import Link from "next/link";
 import Add from "../icons/Add";
 import Receipt from "../icons/Receipt";
 import User from "../icons/User";
+import Close from "../icons/Close";
 
-export default function FooterNav() {
+function FooterClose() {
 	return (
-		<nav className="flex gap-2">
+		<>
+			<Link
+				href="/"
+				className="w-20 h-20 rounded-full bg-[#00EFC5] flex justify-center items-center"
+			>
+				<Close />
+			</Link>
+		</>
+	);
+}
+
+function FooterHome() {
+	return (
+		<>
 			<Link
 				className="bg-[#00EFC5] p-3 px-6 rounded-xl flex justify-center items-center"
 				href="transactions"
@@ -25,7 +42,18 @@ export default function FooterNav() {
 			>
 				<User />
 			</Link>
-			<Link href="/">Home</Link>
-		</nav>
+		</>
 	);
+}
+
+export default function FooterNavigation() {
+	const pathname = usePathname();
+	const [isHome, setIsHome] = useState(true);
+
+	useEffect(() => {
+		if (pathname !== "/") setIsHome(false);
+		else setIsHome(true);
+	}, [pathname]);
+
+	return <nav className="flex gap-2">{isHome ? <FooterHome /> : <FooterClose />}</nav>;
 }

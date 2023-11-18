@@ -1,5 +1,5 @@
 import { Days_One } from "next/font/google";
-import FooterNav from "./ui/home/Footer";
+import FooterNavigation from "./ui/home/Footer";
 import Title from "./ui/home/Title";
 import "./globals.css";
 
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
 				</header>
 				{children}
 				<footer className="pb-5">
-					<FooterNav />
+					<FooterNavigation />
 				</footer>
 			</body>
 		</html>
