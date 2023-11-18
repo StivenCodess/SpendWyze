@@ -1,7 +1,6 @@
 "use client";
 import { useTransactionState } from "@/app/utils/store";
 import { useState } from "react";
-//import * as Crypto from "expo-crypto";
 
 export default function TransactionForm() {
 	const addTransaction = useTransactionState((state) => state.addTransaction);
@@ -13,6 +12,7 @@ export default function TransactionForm() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const transactionObject = {
+			id: Date.now().toString(),
 			type: type,
 			amount: parseInt(amount),
 			description: description,
