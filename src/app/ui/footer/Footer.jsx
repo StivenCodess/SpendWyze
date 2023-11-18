@@ -13,5 +13,9 @@ export default function FooterNavigation() {
 		else setIsHome(true);
 	}, [pathname]);
 
-	return <nav className="flex gap-2">{isHome ? <FooterHome /> : <FooterClose />}</nav>;
+	return (
+		<nav className="flex items-center justify-center gap-2">
+			{isHome ? <FooterHome /> : <FooterClose />}
+		</nav>
+	);
 }
