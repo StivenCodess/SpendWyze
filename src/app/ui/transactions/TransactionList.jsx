@@ -3,42 +3,73 @@ import { useTransactionState } from "@/app/utils/store";
 
 const transactionsEx = [
 	{
+		id: 1,
 		type: "Ropa",
 		amount: 1200,
 		description: "Campera",
 	},
 	{
+		id: 2,
 		type: "Electronica",
 		amount: 30000,
 		description: "Monitor",
 	},
 	{
+		id: 3,
 		type: "Entretenimiento",
 		amount: 1000,
 		description: "Spotify",
 	},
 	{
+		id: 4,
 		type: "Viajes",
 		amount: 5000,
 		description: "Dubai",
 	},
+	{
+		id: 5,
+		type: "Steam",
+		amount: 12300,
+		description: "For honor",
+	},
+	{
+		id: 6,
+		type: "Steam",
+		amount: 16000,
+		description: "Fifa",
+	},
+	{
+		id: 7,
+		type: "Hogar",
+		amount: 5350,
+		description: "Funda sillon",
+	},
+	{
+		id: 8,
+		type: "Ropa",
+		amount: 34000,
+		description: "Calzado Gucci",
+	},
 ];
 
-export function Transaction({ transactionType, amount }) {
-	const handlerButton = () => console.log("Eliminar");
+export function Transaction({ transactionType, amount, id }) {
+	const removeTransaction = useTransactionState((state) => state.removeTransaction);
 
 	return (
 		<li className="flex justify-between text-black">
-			<span className="text-xl text-center p-3 text-[#00EFC5]">{transactionType}</span>
-			<span className="text-xl text-center p-3">$ {amount}</span>
-			{/* <button className="text-4xl text-center p-3" onClick={() => handlerButton()} /> */}
+			<span className="text-lg text-center p-3 text-[#00EFC5]">{transactionType}</span>
+			<div className="flex">
+				<span className="text-lg text-center p-3">$ {amount}</span>
+				<button className="text-md font-extrabold" onClick={() => removeTransaction(id)}>
+					✕
+				</button>
+			</div>
 		</li>
 	);
 }
 
 export default function TransactionList() {
 	const transactions = useTransactionState((state) => state.transactions);
-	console.log(transactions);
 	return (
 		<section className="bg-white flex w-11/12 rounded-2xl flex-col p-3">
 			<h2 className="text-[#00EFC5] text-2xl text-center uppercase mb-5">Transactions</h2>
@@ -49,6 +80,7 @@ export default function TransactionList() {
 							key={transaction.id}
 							transactionType={transaction.type}
 							amount={transaction.amount}
+							id={transaction.id}
 						/>
 					);
 				})}
