@@ -15,7 +15,7 @@ export default function FooterNavigation() {
 
 	return (
 		<nav className="flex items-center justify-center gap-2">
-			{isHome ? <FooterHome /> : <FooterClose />}
+			{pathname === "/login" ? null : isHome ? <FooterHome /> : <FooterClose />}
 		</nav>
 	);
 }
