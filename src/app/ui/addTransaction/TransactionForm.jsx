@@ -33,11 +33,11 @@ export default function TransactionForm() {
 
 	return (
 		<form
-			className="w-3/4 h-[485px] rounded-3xl bg-white items-center justify-evenly gap-5 flex flex-col"
+			className="w-3/4 h-[485px] rounded-3xl bg-white items-center justify-evenly gap-5 flex flex-col shadow-g100"
 			onSubmit={handleSubmit}
 		>
 			<div className="flex flex-col w-full gap-10">
-				<label className="text-center text-2xl text-black">
+				<label className="text-center text-xl text-black">
 					TYPE
 					<input
 						onChange={handleTypeValue}
@@ -47,7 +47,7 @@ export default function TransactionForm() {
 						name="type"
 					/>
 				</label>
-				<label className="text-center text-2xl text-black">
+				<label className="text-center text-xl text-black">
 					AMOUNT
 					<input
 						onChange={handleAmountValue}
@@ -57,7 +57,7 @@ export default function TransactionForm() {
 						name="amount"
 					/>
 				</label>
-				<label className="text-center text-2xl text-black">
+				<label className="text-center text-xl text-black">
 					DESCRIPTION
 					<input
 						onChange={handleDescriptionValue}
@@ -68,7 +68,9 @@ export default function TransactionForm() {
 					/>
 				</label>
 			</div>
-			<button className="bg-[#00EFC5] w-10/12 p-2 rounded-lg text-xl">ADD</button>
+			<button className="bg-[#00EFC5] w-10/12 p-2 rounded-lg text-xl shadow-btn100">
+				ADD
+			</button>
 		</form>
 	);
 }

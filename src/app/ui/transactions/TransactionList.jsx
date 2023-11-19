@@ -71,7 +71,7 @@ export function Transaction({ transactionType, amount, id }) {
 export default function TransactionList() {
 	const transactions = useTransactionState((state) => state.transactions);
 	return (
-		<section className="bg-white flex w-11/12 rounded-2xl flex-col p-3">
+		<section className="bg-white flex w-11/12 rounded-2xl flex-col p-3 shadow-g100">
 			<h2 className="text-[#00EFC5] text-2xl text-center uppercase mb-5">Transactions</h2>
 			<ul className="flex flex-col rounded-2xl p-3">
 				{transactions.map((transaction) => {

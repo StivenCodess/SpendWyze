@@ -10,6 +10,7 @@ module.exports = {
 			boxShadow: {
 				g100: "0px 4px 4px 0px #00EFC5",
 				g50: "0px 4px 4px 0px rgba(33, 240, 203, 0.50)",
+				btn100: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
 			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
