@@ -1,5 +1,5 @@
 "use client";
-import { useTransactionState } from "@/app/utils/store";
+import { useTransactionState } from "@/app/utils/transactionStore";
 
 const transactionsEx = [
 	{

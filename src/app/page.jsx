@@ -1,5 +1,5 @@
 "use client";
-import { useTransactionState } from "./utils/store";
+import { useTransactionState } from "./utils/transactionStore";
 import Balance from "./ui/home/Balance";
 import Expenses from "./ui/home/Expenses";
 import Income from "./ui/home/Income";
