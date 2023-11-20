@@ -1,12 +1,11 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
-const apiKey = process.env.API_KEY;
-const authDomain = process.env.AUTH_DOMAIN;
-const projectId = process.env.PROJECT_ID;
-const storageBucket = process.env.STORAGE_BUCKET;
-const messagingSenderId = process.env.MESSAGING_SENDER_ID;
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+const authDomain = process.env.NEXT_PUBLIC_AUTH_DOMAIN;
+const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
+const storageBucket = process.env.NEXT_PUBLIC_STORAGE_BUCKET;
+const messagingSenderId = process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID;
 const appId = process.env.APP_ID;
 
 const firebaseConfig = {
@@ -18,9 +17,6 @@ const firebaseConfig = {
 	appId: appId,
 };
 
-if (!firebase.apps.length) {
-	firebase.initializeApp(firebaseConfig);
-}
+const app = initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export const auth = getAuth(app);
