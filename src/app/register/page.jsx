@@ -7,12 +7,11 @@ import useAuthStore from "../utils/authStore";
 export default function Home() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { signIn, signInAnonymously } = useAuthStore((state) => state);
+	const { signUp } = useAuthStore((state) => state);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (e.nativeEvent.submitter.name === "guest") await signInAnonymously();
-		else await signIn(email, password);
+		await signUp(email, password);
 	};
 
 	return (
@@ -46,20 +45,15 @@ export default function Home() {
 					</article>
 					<article className="flex flex-col w-full justify-center items-center gap-6">
 						<button className="bg-[#00EFC5] w-10/12 p-2 rounded-lg text-xl shadow-g50 ">
-							LOGIN
+							Register
 						</button>
+
 						<Link
-							href={"/"}
-							className="bg-white w-10/12 p-2 rounded-lg text-xl text-center text-black mt-2 shadow-g50"
-						>
-							REGISTER
-						</Link>
-						<button
-							name="guest"
+							href={"/login"}
 							className="bg-white w-10/12 p-2 rounded-lg text-xl text-center text-black shadow-g50"
 						>
-							GUEST
-						</button>
+							Login
+						</Link>
 					</article>
 				</form>
 			</main>
