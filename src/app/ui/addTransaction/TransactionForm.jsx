@@ -11,6 +11,8 @@ export default function TransactionForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!type || amount != 0) return;
+
     const transactionObject = {
       id: Date.now().toString(),
       type: type,
