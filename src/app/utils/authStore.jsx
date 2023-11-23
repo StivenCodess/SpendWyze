@@ -4,13 +4,25 @@ import {
 	signInWithEmailAndPassword,
 	signOut,
 	signInAnonymously,
+	onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
-const useAuthStore = create((set) => ({
+const useAuthStore = create((set, get) => ({
 	user: null,
-	loading: false,
+	loading: "inProgress",
 	error: null,
+
+	initialize: () => {
+		set({ loading: "inProgress" });
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				set({ user, loading: "complete", error: null });
+			} else {
+				set({ user: null, loading: "complete", error: null });
+			}
+		});
+	},
 
 	signUp: async (email, password) => {
 		set({ loading: true });
@@ -22,28 +34,23 @@ const useAuthStore = create((set) => ({
 			console.log(error);
 			set({ user: null, error: error.message });
 		}
-
 		set({ loading: false });
 	},
 
 	signIn: async (email, password) => {
-		set({ loading: true });
-
 		try {
 			const res = await signInWithEmailAndPassword(auth, email, password);
 			set({ user: res.user, error: null });
-			console.log(res);
+			return true;
 		} catch (error) {
 			console.log(error);
 			set({ user: null, error: error.message });
+			return false;
 		}
-
-		set({ loading: false });
 	},
 
 	signInAnonymously: async () => {
 		set({ loading: true });
-		console.log("Hola");
 		try {
 			const res = await signInAnonymously(auth);
 			set({ user: res.user, error: null });

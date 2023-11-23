@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import useAuthStore from "../utils/authStore";
 
-export default function Home() {
+export default function Register() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { signUp } = useAuthStore((state) => state);

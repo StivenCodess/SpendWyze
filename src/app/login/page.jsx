@@ -3,16 +3,23 @@
 import Link from "next/link";
 import { useState } from "react";
 import useAuthStore from "../utils/authStore";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { signIn, signInAnonymously } = useAuthStore((state) => state);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		let result = false;
+
 		if (e.nativeEvent.submitter.name === "guest") await signInAnonymously();
-		else await signIn(email, password);
+		else result = await signIn(email, password);
+
+		if (result) router.push("/");
+		console.log(result);
 	};
 
 	return (

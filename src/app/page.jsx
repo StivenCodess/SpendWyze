@@ -1,9 +1,11 @@
 "use client";
 import { useTransactionState } from "./utils/transactionStore";
+
+import { useEffect } from "react";
+
 import Balance from "./ui/home/Balance";
 import Expenses from "./ui/home/Expenses";
 import Income from "./ui/home/Income";
-import { useEffect } from "react";
 
 export default function Home() {
 	const transactions = useTransactionState((state) => state.transactions);
