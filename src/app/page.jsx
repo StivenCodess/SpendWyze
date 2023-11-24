@@ -24,8 +24,8 @@ export default function Home() {
 
 	return (
 		<>
-			<main className="flex flex-col items-center flex-1 w-full">
-				<section className="flex flex-col gap-9">
+			<main className="flex flex-col justify-center items-center flex-1 w-full scroll pb-12">
+				<section className="flex flex-col gap-10 items-center justify-center">
 					<Balance balance={balance} />
 					<Expenses expenses={expenses} />
 					<Income incomes={incomes} />

@@ -31,9 +31,9 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body
-				className={`${daysOne.className} overflow-hidden min-h-screen flex flex-col justify-center items-center  `}
+				className={`${daysOne.className} overflow-hidden min-h-screen flex flex-col justify-center items-center`}
 			>
-				<header className="p-10 ml-3 ">
+				<header className="p-5 ml-3 ">
 					<Title />
 				</header>
 
