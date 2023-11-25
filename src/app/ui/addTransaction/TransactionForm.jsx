@@ -11,16 +11,22 @@ export default function TransactionForm() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!type || amount === 0) return;
 
-		const transactionObject = {
-			id: Date.now().toString(),
-			type: type,
-			amount: parseInt(amount),
-			description: description,
-		};
-		addTransaction(transactionObject);
-		resetForm();
+		try {
+			if (!type) throw new Error("Type is empty");
+			if (amount === 0) throw new Error("Amount must be greater or less than 0");
+
+			const transactionObject = {
+				id: Date.now().toString(),
+				type: type,
+				amount: parseInt(amount),
+				description: description,
+			};
+			addTransaction(transactionObject);
+			resetForm();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const handleTypeValue = (e) => setType(e.target.value);
