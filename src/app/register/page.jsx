@@ -2,16 +2,22 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import useAuthStore from "../utils/authStore";
 
 export default function Register() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { signUp } = useAuthStore((state) => state);
+	const router = useRouter();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await signUp(email, password);
+		const signUpResult = await signUp(email, password);
+
+		if (signUpResult.success) router.push(signUpResult.redirect);
+		else console.error(signUpResult.message);
 	};
 
 	return (

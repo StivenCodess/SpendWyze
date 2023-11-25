@@ -55,7 +55,7 @@ export default function Home() {
 							LOGIN
 						</button>
 						<Link
-							href={"/"}
+							href={"/register"}
 							className="bg-white w-10/12 p-2 rounded-lg text-xl text-center text-black mt-2 shadow-g50"
 						>
 							REGISTER
