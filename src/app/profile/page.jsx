@@ -3,7 +3,6 @@ import useAuthStore from "../utils/authStore";
 
 export default function Profile() {
 	const { user, signOut } = useAuthStore((state) => state);
-	console.log(user);
 
 	const handleClick = async () => {
 		await signOut();

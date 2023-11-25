@@ -19,7 +19,6 @@ export default function Home() {
 		else result = await signIn(email, password);
 
 		if (result) router.push("/");
-		console.log(result);
 	};
 
 	return (
