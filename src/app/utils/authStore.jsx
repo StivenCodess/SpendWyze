@@ -80,14 +80,15 @@ const useAuthStore = create((set, get) => ({
 
 		try {
 			await signOut(auth);
-			set({ user: null, error: null });
+			set({ user: null, loading: "complete", error: null });
 			result = { success: true, message: "Login Success", redirect: "/" };
 		} catch (error) {
-			set({ user: null, error: error.message });
+			set({ user: null, loading: "complete", error: error.message });
 			result = { success: false, message: error.message, redirect: null };
 		}
 
 		set({ loading: false });
+		return result;
 	},
 }));
 
