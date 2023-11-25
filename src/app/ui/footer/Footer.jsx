@@ -7,6 +7,7 @@ import FooterClose from "./FooterClose";
 export default function FooterNavigation() {
 	const pathname = usePathname();
 	const [isHome, setIsHome] = useState(true);
+	const routes = ["/login", "/register"];
 
 	useEffect(() => {
 		if (pathname !== "/") setIsHome(false);
@@ -15,7 +16,7 @@ export default function FooterNavigation() {
 
 	return (
 		<nav className="flex items-center justify-center gap-2">
-			{pathname === "/login" ? null : isHome ? <FooterHome /> : <FooterClose />}
+			{routes.includes(pathname) ? null : isHome ? <FooterHome /> : <FooterClose />}
 		</nav>
 	);
 }
