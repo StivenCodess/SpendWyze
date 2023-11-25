@@ -15,7 +15,8 @@ export default function Home() {
 		e.preventDefault();
 		let signInResult = undefined;
 
-		if (e.nativeEvent.submitter.name === "guest") await signInAnonymously();
+		if (e.nativeEvent.submitter.name === "guest")
+			signInResult = await signInAnonymously();
 		else signInResult = await signIn(email, password);
 
 		if (signInResult.success) router.push(signInResult.redirect);
