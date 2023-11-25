@@ -1,7 +1,9 @@
 "use client";
 import { useTransactionState } from "./utils/transactionStore";
+import useAuthStore from "./utils/authStore";
 
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import Balance from "./ui/home/Balance";
 import Expenses from "./ui/home/Expenses";
@@ -9,6 +11,8 @@ import Income from "./ui/home/Income";
 
 export default function Home() {
 	const transactions = useTransactionState((state) => state.transactions);
+	const { initialize, user, loading } = useAuthStore((state) => state);
+	const router = useRouter();
 
 	const balance = useTransactionState((state) => state.balance);
 	const expenses = useTransactionState((state) => state.expenses);
@@ -17,6 +21,16 @@ export default function Home() {
 	const updateTransactionTotals = useTransactionState(
 		(state) => state.updateTransactionTotals
 	);
+
+	useEffect(() => {
+		initialize();
+	}, [initialize]);
+
+	useEffect(() => {
+		if (loading === "complete" && !user) {
+			router.push("/login");
+		}
+	}, [loading, user]);
 
 	useEffect(() => {
 		updateTransactionTotals();
