@@ -13,12 +13,13 @@ export default function Home() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		let result = false;
+		let signInResult = undefined;
 
 		if (e.nativeEvent.submitter.name === "guest") await signInAnonymously();
-		else result = await signIn(email, password);
+		else signInResult = await signIn(email, password);
 
-		if (result) router.push("/");
+		if (signInResult.success) router.push(signInResult.redirect);
+		else console.error(signInResult.message);
 	};
 
 	return (

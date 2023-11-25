@@ -43,15 +43,16 @@ const useAuthStore = create((set, get) => ({
 	signIn: async (email, password) => {
 		set({ loading: true });
 		let result = { success: false, message: null, redirect: null };
+
 		try {
 			const res = await signInWithEmailAndPassword(auth, email, password);
 			set({ user: res.user, error: null });
 			result = { success: true, message: "Login Success", redirect: "/" };
 		} catch (error) {
-			console.log(error);
 			set({ user: null, error: error.message });
 			result = { success: false, message: error.message, redirect: null };
 		}
+
 		set({ loading: false });
 		return result;
 	},
@@ -59,6 +60,7 @@ const useAuthStore = create((set, get) => ({
 	signInAnonymously: async () => {
 		set({ loading: true });
 		let result = { success: false, message: null, redirect: null };
+
 		try {
 			const res = await signInAnonymously(auth);
 			set({ user: res.user, error: null });
@@ -75,6 +77,7 @@ const useAuthStore = create((set, get) => ({
 	signOut: async () => {
 		set({ loading: true });
 		let result = { success: false, message: null, redirect: null };
+
 		try {
 			await signOut(auth);
 			set({ user: null, error: null });
