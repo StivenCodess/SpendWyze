@@ -11,7 +11,6 @@ import { auth } from "./firebase";
 const useAuthStore = create((set, get) => ({
 	user: null,
 	loading: "inProgress",
-	error: null,
 
 	initialize: () => {
 		set({ loading: "inProgress" });
@@ -26,51 +25,63 @@ const useAuthStore = create((set, get) => ({
 
 	signUp: async (email, password) => {
 		set({ loading: true });
+		let result = { success: false, message: null, redirect: null };
 
 		try {
 			const res = await createUserWithEmailAndPassword(auth, email, password);
 			set({ user: res.user, error: null });
+			result = { success: true, message: "Registration Success", redirect: "/" };
 		} catch (error) {
-			console.log(error);
 			set({ user: null, error: error.message });
+			result = { success: false, message: error.message, redirect: null };
 		}
+
 		set({ loading: false });
+		return result;
 	},
 
 	signIn: async (email, password) => {
+		set({ loading: true });
+		let result = { success: false, message: null, redirect: null };
 		try {
 			const res = await signInWithEmailAndPassword(auth, email, password);
 			set({ user: res.user, error: null });
-			return true;
+			result = { success: true, message: "Login Success", redirect: "/" };
 		} catch (error) {
 			console.log(error);
 			set({ user: null, error: error.message });
-			return false;
+			result = { success: false, message: error.message, redirect: null };
 		}
+		set({ loading: false });
+		return result;
 	},
 
 	signInAnonymously: async () => {
 		set({ loading: true });
+		let result = { success: false, message: null, redirect: null };
 		try {
 			const res = await signInAnonymously(auth);
 			set({ user: res.user, error: null });
-			console.log(res);
+			result = { success: true, message: "Login Success", redirect: "/" };
 		} catch (error) {
-			console.log(error);
 			set({ user: null, error: error.message });
+			result = { success: false, message: error.message, redirect: null };
 		}
 
 		set({ loading: false });
+		return result;
 	},
 
 	signOut: async () => {
 		set({ loading: true });
-
+		let result = { success: false, message: null, redirect: null };
 		try {
 			await signOut(auth);
 			set({ user: null, error: null });
+			result = { success: true, message: "Login Success", redirect: "/" };
 		} catch (error) {
 			set({ user: null, error: error.message });
+			result = { success: false, message: error.message, redirect: null };
 		}
 
 		set({ loading: false });
