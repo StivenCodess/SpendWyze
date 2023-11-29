@@ -41,3 +41,20 @@ SpendWyze es una aplicación de gestión financiera personal construida con Next
     ```
 
    Visita [http://localhost:3000](http://localhost:3000) en tu navegador para empezar a usar SpendWyze.
+
+# Planes Futuros 🚧
+
+1. **Integración con Firestore**: Implementaremos la funcionalidad necesaria para almacenar transacciones directamente en Firestore. Esto permitirá una experiencia de datos fluida y en tiempo real para los usuarios de SpendWyze.
+
+2. **Presupuesto**: Introduciremos funciones de presupuesto para ayudar a los usuarios a establecer metas financieras. Con esta característica, podrán hacer un seguimiento de su progreso a lo largo del tiempo, facilitando la gestión de sus finanzas de manera más efectiva.
+
+3. **Visualización de Datos**: Incorporaremos gráficos y tablas para visualizar patrones y tendencias de gastos. Esta mejora proporcionará a los usuarios una comprensión más clara de sus hábitos financieros, permitiéndoles tomar decisiones informadas.
+
+# Contribuciones 🤝
+
+¡Las contribuciones son bienvenidas! Siéntete libre de:
+
+- Abrir problemas si encuentras algún error o tienes sugerencias.
+- Enviar solicitudes de extracción para implementar nuevas funciones o corregir problemas existentes.
+- Proporcionar comentarios para ayudar a mejorar SpendWyze. Tu participación es fundamental para hacer de esta aplicación una herramienta aún mejor para la gestión financiera personal. ¡Gracias por contribuir!
+
