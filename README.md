@@ -19,7 +19,7 @@ SpendWyze es una aplicación de gestión financiera personal construida con Next
 1. **Clona el repositorio:**
 
     ```bash
-    git clone https://github.com/tu-nombre-de-usuario/spendwyze.git
+    git clone https://github.com/StivenCodess/spendwyze.git
     cd spendwyze
     ```
 
